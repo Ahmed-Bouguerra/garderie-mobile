@@ -43,7 +43,8 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     }
-    return ListView.builder(
+
+    final liste = ListView.builder(
       padding: const EdgeInsets.all(8),
       itemCount: activites.length,
       itemBuilder: (context, index) {
@@ -58,6 +59,23 @@ class _HomePageState extends State<HomePage> {
         );
       },
     );
+
+    if (selectedIndex == 0) {
+      return Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(16),
+            child: Text(
+              'Bienvenue à Ma Garderie 👋',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Expanded(child: liste),
+        ],
+      );
+    }
+
+    return liste;
   }
 
   @override
